@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="A fully featured admin theme which can be used to build CRM, CMS, etc.">
+        <meta name="author" content="Coderthemes">
+
+        <link rel="shortcut icon" href="assets/images/favicon.ico">
+
+        <title>Food Order</title>
+		
+		<!-- DataTables -->
+        <link href="../plugins/datatables/jquery.dataTables.min.css" rel="stylesheet" type="text/css"/>
+        <link href="../plugins/datatables/buttons.bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <link href="../plugins/datatables/fixedHeader.bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <link href="../plugins/datatables/responsive.bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <link href="../plugins/datatables/scroller.bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <link href="../plugins/datatables/dataTables.colVis.css" rel="stylesheet" type="text/css"/>
+        <link href="../plugins/datatables/dataTables.bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <link href="../plugins/datatables/fixedColumns.dataTables.min.css" rel="stylesheet" type="text/css"/>
+		
+         <!-- Plugins Css -->
+        <link href="../plugins/timepicker/bootstrap-timepicker.min.css" rel="stylesheet">
+		<link href="../plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css" rel="stylesheet">
+		<link href="../plugins/bootstrap-datepicker/css/bootstrap-datepicker.min.css" rel="stylesheet">
+		<link href="../plugins/clockpicker/css/bootstrap-clockpicker.min.css" rel="stylesheet">
+		<link href="../plugins/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+
+        <!-- App css -->
+        <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link href="assets/css/core.css" rel="stylesheet" type="text/css" />
+        <link href="assets/css/components.css" rel="stylesheet" type="text/css" />
+        <link href="assets/css/icons.css" rel="stylesheet" type="text/css" />
+        <link href="assets/css/pages.css" rel="stylesheet" type="text/css" />
+        <link href="assets/css/menu.css" rel="stylesheet" type="text/css" />
+        <link href="assets/css/responsive.css" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" href="../plugins/switchery/switchery.min.css">
+
+        <script src="assets/js/modernizr.min.js"></script>
+		
+	</head>
+   
+
+    <body>
+        
+        {{>navbar}}
+        <div class="wrapper">
+            <div class="container">
+
+                <!-- Page-Title -->
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="page-title-box">
+                            <div class="btn-group pull-right">
+                                <ol class="breadcrumb hide-phone p-0 m-0">
+                                    <li>
+                                        <a href="/">Food Order</a>
+                                    </li>
+									<li>
+                                        <a href="#">User</a>
+                                    </li>
+                                    
+                                    <li class="active">
+                                        Add User
+                                    </li>
+                                </ol>
+                            </div>
+                            <h4 class="page-title">Add User</h4>
+                        </div>
+                    </div>
+                </div>
+                <!-- end page title end breadcrumb -->
+
+                <div class="row">
+                            <div class="col-sm-12">
+                                <div class="card-box">
+								<form method="POST" action="/addNewUser">
+									<div class="row">
+										<div class="col-lg-1">
+										</div>
+										<div class="col-lg-4">
+											<div class="form-group">
+												<label style="color: #7e7c79;font-size: 16px;font-weight: bold;">USER NAME</label>  
+												<input id="user_name" name="username"  placeholder="ENTER USER NAME" class="form-control" type="text"/>
+											</div>
+										</div>
+										<div class="col-lg-2">
+										</div>
+										<div class="col-lg-4">
+											<div class="form-group">
+												<label style="color: #7e7c79;font-size: 16px;font-weight: bold;">GENDER</label> <br> 
+												<label><input type="radio" id="user_gender" name="gender"   value="M" > Male</label>
+												<label><input type="radio" id="user_gender" name="gender"    value="F" > Female</label>
+											</div>
+										</div>
+										<div class="col-lg-1">
+										</div>
+									</div>
+									
+									
+									<div class="row">
+										
+										<div class="col-lg-1">
+										</div>
+										<div class="col-lg-4">
+											<div class="form-group">
+												<label style="color: #7e7c79;font-size: 16px;font-weight: bold;">ID CARD NO.</label>  
+											<input type="text" id="user_id_card" name="idCardNum"  placeholder="ENTER ID CARD NO." class="form-control"  value="" />
+											</div>
+										</div>
+										<div class="col-lg-2">
+										</div>
+										<div class="col-lg-4">
+											<div class="form-group">
+												<label style="color: #7e7c79;font-size: 16px;font-weight: bold;">DEPT.</label>  
+											<input type="text" id="user_dept" name="department"  placeholder="ENTER DEPARTMENT" class="form-control"  value="" />
+											</div>
+										</div>
+										<div class="col-lg-1">
+										</div>
+                                        
+									</div>
+									<div class="row">
+										<div class="col-lg-1">
+										</div>
+										<div class="col-lg-4">
+											<div class="form-group">
+												<label style="color: #7e7c79;font-size: 16px;font-weight: bold;">MOBILE NUMEBR</label>  
+											<input type="text" id="user_mob_num" name="mobileNum" placeholder="ENTER MOBILE NUMBER" class="form-control"  value="" ></textarea>
+											</div>
+										</div>
+										<div class="col-lg-2">
+										</div>
+										<div class="col-lg-4">
+											<div class="form-group">
+												<label style="color: #7e7c79;font-size: 16px;font-weight: bold;">E-MAIL</label>  
+											<input type="text" id="user_email" name="email"  placeholder="ENTER EMAIL ID" class="form-control"  value="" ></textarea>
+											</div>
+										</div>
+										<div class="col-lg-1">
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-lg-1">
+										</div>
+										<div class="col-lg-4">
+											<div class="form-group">
+												<label style="color: #7e7c79;font-size: 16px;font-weight: bold;">ADDRESS</label>  
+												<textarea id="customer_address" name="address" placeholder="ENTER ADDRESS" class="form-control"  value="" ></textarea>
+											</div>
+										</div>
+										<div class="col-lg-2">
+										</div>
+										<div class="col-lg-4">
+											<div class="form-group">
+												
+												
+											</div>
+										</div>
+										<div class="col-lg-1">
+										</div>
+									</div>
+									
+									
+									<br>
+									<div class="form-group">
+                                        <div class="col-lg-4">
+										</div>
+										<div class="col-lg-4">
+										
+                                            <div style="text-align: center;">
+                                                <button type="submit" name="Submit" class="btn btn-success" style="font-size: 16px;width: 35%;">SUBMIT </button>
+												<button type="reset" name="reset"  class="btn btn-danger" style="font-size: 16px;width: 35%;">RESET </span></button>
+                                            </div>
+										</div>
+											<div class="col-lg-4">
+										</div>
+                                    </div>
+                                    <br>
+								</form>
+                                    <!-- end row -->
+                                </div>
+                            </div>
+                        </div>
+                <!-- end row -->
+
+
+
+                <!-- Footer -->
+                <footer class="footer text-right">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xs-12 text-center">
+                              
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+                <!-- End Footer -->
+
+            </div>
+        </div>
+
+      
+       <!-- jQuery  -->
+              <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/js/bootstrap.min.js"></script>
+        <script src="assets/js/detect.js"></script>
+        <script src="assets/js/fastclick.js"></script>
+        <script src="assets/js/jquery.blockUI.js"></script>
+        <script src="assets/js/waves.js"></script>
+        <script src="assets/js/jquery.slimscroll.js"></script>
+        <script src="assets/js/jquery.scrollTo.min.js"></script>
+        <script src="../plugins/switchery/switchery.min.js"></script>
+
+        <script src="../plugins/datatables/jquery.dataTables.min.js"></script>
+        <script src="../plugins/datatables/dataTables.bootstrap.js"></script>
+
+        <script src="../plugins/datatables/dataTables.buttons.min.js"></script>
+        <script src="../plugins/datatables/buttons.bootstrap.min.js"></script>
+        <script src="../plugins/datatables/jszip.min.js"></script>
+        <script src="../plugins/datatables/pdfmake.min.js"></script>
+        <script src="../plugins/datatables/vfs_fonts.js"></script>
+        <script src="../plugins/datatables/buttons.html5.min.js"></script>
+        <script src="../plugins/datatables/buttons.print.min.js"></script>
+        <script src="../plugins/datatables/dataTables.fixedHeader.min.js"></script>
+        <script src="../plugins/datatables/dataTables.keyTable.min.js"></script>
+        <script src="../plugins/datatables/dataTables.responsive.min.js"></script>
+        <script src="../plugins/datatables/responsive.bootstrap.min.js"></script>
+        <script src="../plugins/datatables/dataTables.scroller.min.js"></script>
+        <script src="../plugins/datatables/dataTables.colVis.js"></script>
+        <script src="../plugins/datatables/dataTables.fixedColumns.min.js"></script>
+
+        <!-- init -->
+        <script src="assets/pages/jquery.datatables.init.js"></script>
+
+        <script src="../plugins/moment/moment.js"></script>
+     	<script src="../plugins/timepicker/bootstrap-timepicker.js"></script>
+     	<script src="../plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js"></script>
+     	<script src="../plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+     	<script src="../plugins/clockpicker/js/bootstrap-clockpicker.min.js"></script>
+     	<script src="../plugins/bootstrap-daterangepicker/daterangepicker.js"></script>
+
+		<!-- App js -->
+        <script src="assets/js/jquery.core.js"></script>
+        <script src="assets/js/jquery.app.js"></script>
+		<script src="assets/pages/jquery.form-pickers.init.js"></script>
+
+    </body>
+</html>

@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="A fully featured admin theme which can be used to build CRM, CMS, etc.">
+        <meta name="author" content="Coderthemes">
+
+        <link rel="shortcut icon" href="assets/images/favicon.ico">
+
+        <title>Food Order</title>
+		
+		<!-- DataTables -->
+        <link href="../plugins/datatables/jquery.dataTables.min.css" rel="stylesheet" type="text/css"/>
+        <link href="../plugins/datatables/buttons.bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <link href="../plugins/datatables/fixedHeader.bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <link href="../plugins/datatables/responsive.bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <link href="../plugins/datatables/scroller.bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <link href="../plugins/datatables/dataTables.colVis.css" rel="stylesheet" type="text/css"/>
+        <link href="../plugins/datatables/dataTables.bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <link href="../plugins/datatables/fixedColumns.dataTables.min.css" rel="stylesheet" type="text/css"/>
+		
+         <!-- Plugins Css -->
+        <link href="../plugins/timepicker/bootstrap-timepicker.min.css" rel="stylesheet">
+		<link href="../plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css" rel="stylesheet">
+		<link href="../plugins/bootstrap-datepicker/css/bootstrap-datepicker.min.css" rel="stylesheet">
+		<link href="../plugins/clockpicker/css/bootstrap-clockpicker.min.css" rel="stylesheet">
+		<link href="../plugins/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+
+        <!-- App css -->
+        <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link href="assets/css/core.css" rel="stylesheet" type="text/css" />
+        <link href="assets/css/components.css" rel="stylesheet" type="text/css" />
+        <link href="assets/css/icons.css" rel="stylesheet" type="text/css" />
+        <link href="assets/css/pages.css" rel="stylesheet" type="text/css" />
+        <link href="assets/css/menu.css" rel="stylesheet" type="text/css" />
+        <link href="assets/css/responsive.css" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" href="../plugins/switchery/switchery.min.css">
+
+        <script src="assets/js/modernizr.min.js"></script>
+		
+	</head>
+   
+
+
+    <body>
+
+        {{>navbar}}
+        <div class="wrapper">
+            <div class="container">
+
+                <!-- Page-Title -->
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="page-title-box">
+                            <div class="btn-group pull-right">
+                                <ol class="breadcrumb hide-phone p-0 m-0">
+                                    <li>
+                                        <a href="index.html">Food Order</a>
+                                    </li>
+									<li>
+                                        <a href="#">User</a>
+                                    </li>
+                                    
+                                    <li class="active">
+                                        User List
+                                    </li>
+                                </ol>
+                            </div>
+                            <h4 class="page-title">User List</h4>
+                        </div>
+                    </div>
+                </div>
+                <!-- end page title end breadcrumb -->
+
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="card-box table-responsive">
+                            <table id="datatable" class="table table-striped table-bordered">
+							<!-- To display list of users what all we saved need to write backend connectivity here -->
+                                <thead>
+                                    <tr>
+                                        <th style="text-align:center;">S.No.</th>
+                                        <th style="text-align:center;">Id</th>
+                                        <th style="text-align:center;">Name</th>
+                                        <th style="text-align:center;">Gender</th>
+										<th style="text-align:center;">Id Card No.</th>
+                                        <th style="text-align:center;">Mobile Number</th>
+										<th style="text-align:center;">E-Mail</th>
+										<th style="text-align:center;">Address</th>
+										<th style="text-align:center;">Action</th>
+                                    </tr>
+                                </thead>
+								<tbody>
+                                    <tr>
+                                        <td style="text-align:center;">1</td>
+                                        <td>111</td>
+                                        <td>Customer 1</td>
+										<td>Male</td>
+                                        <td>ID994</td>
+										<td>99865453214</td>
+										<td>customer1@gmail.com</td>
+										<td>Andrapradash</td>
+										
+                                        <td style="width: 16%;text-align: center;"><button type="edit" name="edit" class="btn btn-warning" > <span class="glyphicon glyphicon-edit"></span></button>
+											<button type="delete" name="delete" class="btn btn-danger" > <span class="glyphicon glyphicon-remove"></span></button></td>
+                                           
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:center;">1</td>
+                                        <td>111</td>
+                                        <td>Customer 1</td>
+										<td>Male</td>
+                                        <td>ID994</td>
+										<td>99865453214</td>
+										<td>customer1@gmail.com</td>
+										<td>Andrapradash</td>
+										
+                                        <td style="width: 16%;text-align: center;"><button type="edit" name="edit" class="btn btn-warning" > <span class="glyphicon glyphicon-edit"></span></button>
+											<button type="delete" name="delete" class="btn btn-danger" > <span class="glyphicon glyphicon-remove"></span></button></td>
+                                           
+                                    </tr>
+									<tr>
+                                        <td style="text-align:center;">1</td>
+                                        <td>111</td>
+                                        <td>Customer 1</td>
+										<td>Male</td>
+                                        <td>ID994</td>
+										<td>99865453214</td>
+										<td>customer1@gmail.com</td>
+										<td>Andrapradash</td>
+										
+                                        <td style="width: 16%;text-align: center;"><button type="edit" name="edit" class="btn btn-warning" > <span class="glyphicon glyphicon-edit"></span></button>
+											<button type="delete" name="delete" class="btn btn-danger" > <span class="glyphicon glyphicon-remove"></span></button></td>
+                                           
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!-- end row -->
+				<!-- Footer -->
+                <footer class="footer text-right">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xs-12 text-center">
+                                
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+                <!-- End Footer -->
+
+            </div>
+        </div>
+
+    <!-- jQuery  -->
+     <!-- jQuery  -->
+              <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/js/bootstrap.min.js"></script>
+        <script src="assets/js/detect.js"></script>
+        <script src="assets/js/fastclick.js"></script>
+        <script src="assets/js/jquery.blockUI.js"></script>
+        <script src="assets/js/waves.js"></script>
+        <script src="assets/js/jquery.slimscroll.js"></script>
+        <script src="assets/js/jquery.scrollTo.min.js"></script>
+        <script src="../plugins/switchery/switchery.min.js"></script>
+
+        <script src="../plugins/datatables/jquery.dataTables.min.js"></script>
+        <script src="../plugins/datatables/dataTables.bootstrap.js"></script>
+
+        <script src="../plugins/datatables/dataTables.buttons.min.js"></script>
+        <script src="../plugins/datatables/buttons.bootstrap.min.js"></script>
+        <script src="../plugins/datatables/jszip.min.js"></script>
+        <script src="../plugins/datatables/pdfmake.min.js"></script>
+        <script src="../plugins/datatables/vfs_fonts.js"></script>
+        <script src="../plugins/datatables/buttons.html5.min.js"></script>
+        <script src="../plugins/datatables/buttons.print.min.js"></script>
+        <script src="../plugins/datatables/dataTables.fixedHeader.min.js"></script>
+        <script src="../plugins/datatables/dataTables.keyTable.min.js"></script>
+        <script src="../plugins/datatables/dataTables.responsive.min.js"></script>
+        <script src="../plugins/datatables/responsive.bootstrap.min.js"></script>
+        <script src="../plugins/datatables/dataTables.scroller.min.js"></script>
+        <script src="../plugins/datatables/dataTables.colVis.js"></script>
+        <script src="../plugins/datatables/dataTables.fixedColumns.min.js"></script>
+
+        <!-- init -->
+        <script src="assets/pages/jquery.datatables.init.js"></script>
+
+        <script src="../plugins/moment/moment.js"></script>
+     	<script src="../plugins/timepicker/bootstrap-timepicker.js"></script>
+     	<script src="../plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js"></script>
+     	<script src="../plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+     	<script src="../plugins/clockpicker/js/bootstrap-clockpicker.min.js"></script>
+     	<script src="../plugins/bootstrap-daterangepicker/daterangepicker.js"></script>
+
+		<!-- App js -->
+        <script src="assets/js/jquery.core.js"></script>
+        <script src="assets/js/jquery.app.js"></script>
+		<script src="assets/pages/jquery.form-pickers.init.js"></script>
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('#datatable').dataTable();
+                $('#datatable-keytable').DataTable({keys: true});
+                $('#datatable-responsive').DataTable();
+                $('#datatable-colvid').DataTable({
+                    "dom": 'C<"clear">lfrtip',
+                    "colVis": {
+                        "buttonText": "Change columns"
+                    }
+                });
+                $('#datatable-scroller').DataTable({
+                    ajax: "../plugins/datatables/json/scroller-demo.json",
+                    deferRender: true,
+                    scrollY: 380,
+                    scrollCollapse: true,
+                    scroller: true
+                });
+                var table = $('#datatable-fixed-header').DataTable({fixedHeader: true});
+                var table = $('#datatable-fixed-col').DataTable({
+                    scrollY: "300px",
+                    scrollX: true,
+                    scrollCollapse: true,
+                    paging: false,
+                    fixedColumns: {
+                        leftColumns: 1,
+                        rightColumns: 1
+                    }
+                });
+            });
+            TableManageButtons.init();
+
+        </script>
+
+    </body>
+</html>

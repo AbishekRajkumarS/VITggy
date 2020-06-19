@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="A fully featured admin theme which can be used to build CRM, CMS, etc.">
+        <meta name="author" content="Coderthemes">
+
+        <link rel="shortcut icon" href="assets/images/favicon.ico">
+
+        <title>Food Order</title>
+		
+		<!-- DataTables -->
+        <link href="../plugins/datatables/jquery.dataTables.min.css" rel="stylesheet" type="text/css"/>
+        <link href="../plugins/datatables/buttons.bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <link href="../plugins/datatables/fixedHeader.bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <link href="../plugins/datatables/responsive.bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <link href="../plugins/datatables/scroller.bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <link href="../plugins/datatables/dataTables.colVis.css" rel="stylesheet" type="text/css"/>
+        <link href="../plugins/datatables/dataTables.bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <link href="../plugins/datatables/fixedColumns.dataTables.min.css" rel="stylesheet" type="text/css"/>
+		
+         <!-- Plugins Css -->
+        <link href="../plugins/timepicker/bootstrap-timepicker.min.css" rel="stylesheet">
+		<link href="../plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css" rel="stylesheet">
+		<link href="../plugins/bootstrap-datepicker/css/bootstrap-datepicker.min.css" rel="stylesheet">
+		<link href="../plugins/clockpicker/css/bootstrap-clockpicker.min.css" rel="stylesheet">
+		<link href="../plugins/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+
+        <!-- App css -->
+        <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link href="assets/css/core.css" rel="stylesheet" type="text/css" />
+        <link href="assets/css/components.css" rel="stylesheet" type="text/css" />
+        <link href="assets/css/icons.css" rel="stylesheet" type="text/css" />
+        <link href="assets/css/pages.css" rel="stylesheet" type="text/css" />
+        <link href="assets/css/menu.css" rel="stylesheet" type="text/css" />
+        <link href="assets/css/responsive.css" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" href="../plugins/switchery/switchery.min.css">
+
+        <script src="assets/js/modernizr.min.js"></script>
+		
+	</head>
+   
+
+
+    <body>
+
+        {{>navbar}}
+        <div class="wrapper">
+            <div class="container">
+
+                <!-- Page-Title -->
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="page-title-box">
+                            <div class="btn-group pull-right">
+                                <ol class="breadcrumb hide-phone p-0 m-0">
+                                    <li>
+                                        <a href="index.html">Food Order</a>
+                                    </li>
+									<li>
+                                        <a href="#">Order</a>
+                                    </li>
+                                    
+                                    <li class="active">
+                                        Create Order
+                                    </li>
+                                </ol>
+                            </div>
+                            <h4 class="page-title">Create Order</h4>
+                        </div>
+                    </div>
+                </div>
+                <!-- end page title end breadcrumb -->
+				<br>
+						<div class="row">
+							
+                            <div class="col-sm-12">
+                             <form role="form" id="form1" method="post">
+							 <!--To Save Need to write backend connectivity code here. -->
+									<div class="row">
+										<!--To List the user for auto-complete and according to restaurant below food table need to change -->
+											<div class="col-sm-4">
+											<div class="form-group">
+												<div class="input-group">
+                                                    <span class="input-group-addon"><i class="mdi mdi-account"></i></span>
+                                                    <input type="text" id="id_samples_details" name="id_samples_details" class="form-control" placeholder="USER">
+													
+												</div>
+											</div>
+										</div>
+										
+										<div class="col-sm-4">
+											<div class="form-group">
+												<div class="input-group">
+                                                    <span class="input-group-addon"><i class="mdi mdi-home"></i></span>
+													<!-- Display the restaurant list in drop down -->
+                                                    <select id="restaurant" name="restaurant" class="form-control">
+														<option>Choose One </option>
+														<option></option>
+													</select>
+												</div>
+											</div>
+										</div>
+										<div class="col-sm-4">
+											<div class="form-group">
+												<div class="input-group">
+                                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                    <input type="text" style="background-color: white;" id="sampledate" name="sampledate" class="form-control" readonly placeholder="DATE">
+												</div>
+											</div>
+										</div>
+									</div>
+								</form>
+							</div>
+							
+						</div>
+						<br>
+                <div class="row">
+                    <div class="col-sm-12">
+					<div class="col-sm-2">
+					</div>
+					<div class="col-sm-8">
+                        <div class="card-box table-responsive">
+                            <table id="" class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 15%;">S.No.</th>
+                                        <th style="width: 15%;">Id</th>
+                                        <th style="width: 20%;">Food </th>
+										<th style="width: 10%;">Price</th>
+                                        <th style="width: 10%;">Qty</th>
+										<th style="width: 10%;">Total</th>
+									
+										<th style="width: 20%;text-align: center;">Action</th>
+                                    </tr>
+                                </thead>
+								<tbody>
+                                    <tr>
+                                        <td style="width: 15%;">1</td>
+                                        <td style="width: 15%;">111</td>
+                                        <td style="width: 20%;">Idly</td>
+										<td style="width: 10%;">Rs.200.00</td>
+										<td style="width: 10%;"><input class="form-control" type="text" id="quty" name="quty" /></td>
+                                        <td style="width: 10%;">Rs.200.00</td>
+                                        <td style="width: 20;text-align: center;"><button type="edit" name="edit" class="btn btn-info" > <span class="mdi mdi-silverware-variant"></span></button>
+											</td>
+                                           
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 15%;">2</td>
+                                        <td style="width: 15%;">112</td>
+                                        <td style="width: 20%;">Dosa</td>
+										<td style="width: 10%;">Rs.300.00</td>
+										<td style="width: 10%;"><input class="form-control" type="text" id="quty" name="quty" /></td>
+                                        <td style="width: 10%;">Rs.400.00</td>
+                                        <td style="width: 20%;text-align: center;"><button type="edit" name="edit" class="btn btn-info" > <span class="mdi mdi-silverware-variant"></span></button>
+											</td>
+                                              
+                                    </tr>
+									<tr>
+                                        <td style="width: 15%;">3</td>
+                                        <td style="width: 15%;">113</td>
+                                        <td style="width: 20%;">Pongal</td>
+										<td style="width: 10%;">Rs.500.00</td>
+										<td style="width: 10%;"><input class="form-control" type="text" id="quty" name="quty" /></td>
+                                        <td style="width: 10%;">Rs.600.00</td>
+                                        <td style="width: 20%;text-align: center;"><button type="edit" name="edit" class="btn btn-info" > <span class="mdi mdi-silverware-variant"></span></button>
+											</td>
+                                             
+                                    </tr>
+									<tr>
+                                        <td colspan="5" style="text-align:right">TOTAL</td>
+										<td colspan="6"><input type="text" style="width: 50%;" class="form-control" id="total" name="total"></td>
+                                        
+                                             
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+					</div>
+					<div class="col-sm-2">
+					</div>
+							<div class="form-group">
+                                        <div class="col-lg-4">
+										</div>
+										<div class="col-lg-4">
+										
+                                            <div style="text-align: center;">
+                                                <button type="submit" name="Submit" class="btn btn-success" style="font-size: 16px;width: 35%;font-weight:bold;">SUBMIT </button>
+												<button type="reset" name="reset"  class="btn btn-danger" style="font-size: 16px;width: 35%;font-weight:bold;">RESET </span></button>
+                                            </div>
+										</div>
+											<div class="col-lg-4">
+										</div>
+                                    </div>
+                    </div>
+                </div>
+                <!-- end row -->
+				<!-- Footer -->
+                <footer class="footer text-right">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xs-12 text-center">
+                                
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+                <!-- End Footer -->
+
+            </div>
+        </div>
+
+    <!-- jQuery  -->
+     <!-- jQuery  -->
+              <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/js/bootstrap.min.js"></script>
+        <script src="assets/js/detect.js"></script>
+        <script src="assets/js/fastclick.js"></script>
+        <script src="assets/js/jquery.blockUI.js"></script>
+        <script src="assets/js/waves.js"></script>
+        <script src="assets/js/jquery.slimscroll.js"></script>
+        <script src="assets/js/jquery.scrollTo.min.js"></script>
+        <script src="../plugins/switchery/switchery.min.js"></script>
+
+        <script src="../plugins/datatables/jquery.dataTables.min.js"></script>
+        <script src="../plugins/datatables/dataTables.bootstrap.js"></script>
+
+        <script src="../plugins/datatables/dataTables.buttons.min.js"></script>
+        <script src="../plugins/datatables/buttons.bootstrap.min.js"></script>
+        <script src="../plugins/datatables/jszip.min.js"></script>
+        <script src="../plugins/datatables/pdfmake.min.js"></script>
+        <script src="../plugins/datatables/vfs_fonts.js"></script>
+        <script src="../plugins/datatables/buttons.html5.min.js"></script>
+        <script src="../plugins/datatables/buttons.print.min.js"></script>
+        <script src="../plugins/datatables/dataTables.fixedHeader.min.js"></script>
+        <script src="../plugins/datatables/dataTables.keyTable.min.js"></script>
+        <script src="../plugins/datatables/dataTables.responsive.min.js"></script>
+        <script src="../plugins/datatables/responsive.bootstrap.min.js"></script>
+        <script src="../plugins/datatables/dataTables.scroller.min.js"></script>
+        <script src="../plugins/datatables/dataTables.colVis.js"></script>
+        <script src="../plugins/datatables/dataTables.fixedColumns.min.js"></script>
+
+        <!-- init -->
+        <script src="assets/pages/jquery.datatables.init.js"></script>
+
+        <script src="../plugins/moment/moment.js"></script>
+     	<script src="../plugins/timepicker/bootstrap-timepicker.js"></script>
+     	<script src="../plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js"></script>
+     	<script src="../plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+     	<script src="../plugins/clockpicker/js/bootstrap-clockpicker.min.js"></script>
+     	<script src="../plugins/bootstrap-daterangepicker/daterangepicker.js"></script>
+
+		<!-- App js -->
+        <script src="assets/js/jquery.core.js"></script>
+        <script src="assets/js/jquery.app.js"></script>
+		<script src="assets/pages/jquery.form-pickers.init.js"></script>
+
+        
+
+    </body>
+</html>

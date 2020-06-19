@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Login Page</title>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link rel="stylesheet" href="./assets/css/li.css">
+
+    </head>
+    <body>
+        <div class="login">
+            <h1>Login</h1>
+            <form action="/login" method="POST">
+                <div class="inputbox">
+                    <input type="text" name="email">
+                    <label>Email</label>
+                </div>
+
+                <div class="inputbox">
+                    <input type="password" name="password">
+                    <label>Password</label>
+                </div>
+                <a href="#">Forgot password?</a>
+                <button type="submit">Submit</button>
+            </form>
+            <a href="/signUp">Create account</a>
+            <br><br>
+            <span style="color:white;"><i class="fab fa-google fa-2x"></i><i class="fab fa-facebook fa-2x"></i><i class="fab fa-instagram fa-2x"></i></span>
+        </div>
+    </body>
+</html>

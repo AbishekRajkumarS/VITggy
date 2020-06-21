@@ -6,6 +6,8 @@ const port =  process.env.PORT || 3000;
 
 var getDirName = path.join(__dirname, '../templates/main/home');
 var viewPath = path.join(__dirname, '../templates/main/home');
+var partialPath = path.join(__dirname, '../templates/partials')
+
 app.set("view engine", "hbs");
 app.set("views", viewPath);
 hbs.registerPartials(partialPath);

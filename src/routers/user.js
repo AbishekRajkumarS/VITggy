@@ -1,51 +1,78 @@
 const express = require('express')
 const multer = require('multer')
 const sharp = require('sharp')
+
 const User = require('../models/user')
-const normalUser = require('../models/addUser')
+const normalUser = require('../models/normalUser')
+const restaurant = require('../models/restaurants')
+
 const auth = require('../middleware/auth')
 
 const { sendWelcomeEmail, sendCancelationEmail } = require('../email/account')
 const router = new express.Router()
 
 router.get('/', async (req, res) => {
+    res.render("everyone")
+})
+
+router.get('/home', async (req, res) => {
     res.render("home", {
         user: req.user
     })
 })
 
-router.get('/admin', auth, async(req, res) => {
+router.get('/admin', async(req, res) => {
     res.render("index", {
         user: req.user
     })
 })
 
-router.get('/create-order', auth, (req, res) => {
-    res.render("create-order");
+router.get('/create-order', (req, res) => {
+    res.render("create-order", {
+        user: req.user
+    });
 })
 
-router.get('/order-list', auth, (req, res) => {
+router.get('/order-list', (req, res) => {
     res.render("order-list");
 })
 
-router.get('/add-user', auth, (req, res) => {
-    res.render("add-user");
+router.get('/add-user', (req, res) => {
+    res.render("add-user", {
+        user: req.user
+    });
 })
 
-router.get('/user-list', auth, (req, res) => {
-    res.render("user-list");
+router.get('/user-list', (req, res) => {
+    res.render("user-list", {
+        user: req.user
+    });
 })
 
-router.get('/add-restaurant', auth, (req, res) => {
-    res.render("add-restaurant");
+router.get('/add-restaurant', (req, res) => {
+    res.render("add-restaurant", {
+        user: req.user
+    });
 })
 
-router.get('/restaurant-list', auth, (req, res) => {
-    res.render("restaurant-list");
+router.get('/restaurant-list', (req, res) => {
+    res.render("restaurant-list", {
+        user: req.user
+    });
+})
+
+router.get('/std-restaurant-list', (req, res) => {
+    res.render("std-res-list", {
+        user: req.user
+    });
 })
 
 router.get('/adminLogin', (req, res) => {
     res.render("adminLogin");
+})
+
+router.get('/studentLogin', (req, res) => {
+    res.render("studentLogin");
 })
 
 router.get('/signUp', (req, res) => {
@@ -67,13 +94,25 @@ router.post('/addAdminUsers', async(req, res) => {
     }
 })
 
-router.post('/addNewUser', async(req, res) => {
-    //console.log(req.body);
+router.post('/addNewStd', async(req, res) => {
+    console.log(req.body);
     const newUser = new normalUser(req.body)
     try{
         await newUser.save()
         const token = await newUser.generateAuthToken()
-        res.status(201).render("add-user") 
+        res.status(201).render("index") 
+    }catch (e) {
+        res.status(400).send(e)
+    }
+})
+
+router.post('/addNewRes', async(req, res) => {
+    // console.log(req.body);
+    const newRes = new restaurant(req.body)
+    try{
+        await newRes.save()
+        const token = await newRes.generateAuthToken()
+        res.status(201).render("index") 
     }catch (e) {
         res.status(400).send(e)
     }
@@ -85,7 +124,20 @@ router.post('/login', async(req, res) => {
         const user = await User.findByCredentials(req.body.email, req.body.password)
         // console.log(user)
         const token = await user.generateAuthToken()
-        res.render("index", {user, token})
+        res.render("index", {token, user})
+        // res.send({user, token});
+    } catch (e) {
+        res.status(400).send("ERROR");
+    }
+})
+
+router.post('/stdlogin', async(req, res) => {
+    try {
+        // console.log('Hii')
+        const user = await normalUser.findByCredentials(req.body.email, req.body.password)
+        // console.log(user)
+        const token = await user.generateAuthToken()
+        res.render("home", {user, token})
         // res.send({user, token});
     } catch (e) {
         res.status(400).send("ERROR");

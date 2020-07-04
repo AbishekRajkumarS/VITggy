@@ -56,7 +56,7 @@
                             <div class="btn-group pull-right">
                                 <ol class="breadcrumb hide-phone p-0 m-0">
                                     <li>
-                                        <a href="/">Food Order</a>
+                                        <a href="/admin">Food Order</a>
                                     </li>
 									<li>
                                         <a href="#">User</a>
@@ -73,119 +73,123 @@
                 </div>
                 <!-- end page title end breadcrumb -->
 
-                <div class="row">
-                            <div class="col-sm-12">
-                                <div class="card-box">
-								<form method="POST" action="/addNewUser">
-									<div class="row">
-										<div class="col-lg-1">
-										</div>
-										<div class="col-lg-4">
-											<div class="form-group">
-												<label style="color: #7e7c79;font-size: 16px;font-weight: bold;">USER NAME</label>  
-												<input id="user_name" name="username"  placeholder="ENTER USER NAME" class="form-control" type="text"/>
-											</div>
-										</div>
-										<div class="col-lg-2">
-										</div>
-										<div class="col-lg-4">
-											<div class="form-group">
-												<label style="color: #7e7c79;font-size: 16px;font-weight: bold;">GENDER</label> <br> 
-												<label><input type="radio" id="user_gender" name="gender"   value="M" > Male</label>
-												<label><input type="radio" id="user_gender" name="gender"    value="F" > Female</label>
-											</div>
-										</div>
-										<div class="col-lg-1">
-										</div>
-									</div>
-									
-									
-									<div class="row">
-										
-										<div class="col-lg-1">
-										</div>
-										<div class="col-lg-4">
-											<div class="form-group">
-												<label style="color: #7e7c79;font-size: 16px;font-weight: bold;">ID CARD NO.</label>  
-											<input type="text" id="user_id_card" name="idCardNum"  placeholder="ENTER ID CARD NO." class="form-control"  value="" />
-											</div>
-										</div>
-										<div class="col-lg-2">
-										</div>
-										<div class="col-lg-4">
-											<div class="form-group">
-												<label style="color: #7e7c79;font-size: 16px;font-weight: bold;">DEPT.</label>  
-											<input type="text" id="user_dept" name="department"  placeholder="ENTER DEPARTMENT" class="form-control"  value="" />
-											</div>
-										</div>
-										<div class="col-lg-1">
-										</div>
-                                        
-									</div>
-									<div class="row">
-										<div class="col-lg-1">
-										</div>
-										<div class="col-lg-4">
-											<div class="form-group">
-												<label style="color: #7e7c79;font-size: 16px;font-weight: bold;">MOBILE NUMEBR</label>  
-											<input type="text" id="user_mob_num" name="mobileNum" placeholder="ENTER MOBILE NUMBER" class="form-control"  value="" ></textarea>
-											</div>
-										</div>
-										<div class="col-lg-2">
-										</div>
-										<div class="col-lg-4">
-											<div class="form-group">
-												<label style="color: #7e7c79;font-size: 16px;font-weight: bold;">E-MAIL</label>  
-											<input type="text" id="user_email" name="email"  placeholder="ENTER EMAIL ID" class="form-control"  value="" ></textarea>
-											</div>
-										</div>
-										<div class="col-lg-1">
-										</div>
-									</div>
-									<div class="row">
-										<div class="col-lg-1">
-										</div>
-										<div class="col-lg-4">
-											<div class="form-group">
-												<label style="color: #7e7c79;font-size: 16px;font-weight: bold;">ADDRESS</label>  
-												<textarea id="customer_address" name="address" placeholder="ENTER ADDRESS" class="form-control"  value="" ></textarea>
-											</div>
-										</div>
-										<div class="col-lg-2">
-										</div>
-										<div class="col-lg-4">
-											<div class="form-group">
-												
-												
-											</div>
-										</div>
-										<div class="col-lg-1">
-										</div>
-									</div>
-									
-									
-									<br>
-									<div class="form-group">
-                                        <div class="col-lg-4">
-										</div>
-										<div class="col-lg-4">
-										
-                                            <div style="text-align: center;">
-                                                <button type="submit" name="Submit" class="btn btn-success" style="font-size: 16px;width: 35%;">SUBMIT </button>
-												<button type="reset" name="reset"  class="btn btn-danger" style="font-size: 16px;width: 35%;">RESET </span></button>
+                <form method="POST" action="/addNewStd">
+                    <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="card-box">
+                                        <div class="row">
+                                            <div class="col-lg-1">
                                             </div>
-										</div>
-											<div class="col-lg-4">
-										</div>
+                                            <div class="col-lg-4">
+                                                <div class="form-group">
+                                                    <label style="color: #7e7c79;font-size: 16px;font-weight: bold;">USER NAME</label>  
+                                                    <input id="user_name" name="username"  placeholder="ENTER USER NAME" class="form-control" type="text"/>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-2">
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <div class="form-group">
+                                                    <label style="color: #7e7c79;font-size: 16px;font-weight: bold;">GENDER</label> <br> 
+                                                    <label><input type="radio" id="user_gender" name="gender"   value="M" > Male</label>
+                                                    <label><input type="radio" id="user_gender" name="gender"    value="F" > Female</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-1">
+                                            </div>
+                                        </div>
+                                        
+                                        
+                                        <div class="row">
+                                            
+                                            <div class="col-lg-1">
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <div class="form-group">
+                                                    <label style="color: #7e7c79;font-size: 16px;font-weight: bold;">ID CARD NO.</label>  
+                                                <input type="text" id="user_id_card" name="idCardNum"  placeholder="ENTER ID CARD NO." class="form-control"  value="" />
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-2">
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <div class="form-group">
+                                                    <label style="color: #7e7c79;font-size: 16px;font-weight: bold;">DEPT.</label>  
+                                                <input type="text" id="user_dept" name="department"  placeholder="ENTER DEPARTMENT" class="form-control"  value="" />
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-1">
+                                            </div>
+                                            
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-1">
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <div class="form-group">
+                                                    <label style="color: #7e7c79;font-size: 16px;font-weight: bold;">MOBILE NUMEBR</label>  
+                                                <input type="text" id="user_mob_num" name="mobileNum" placeholder="ENTER MOBILE NUMBER" class="form-control"  value="" ></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-2">
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <div class="form-group">
+                                                    <label style="color: #7e7c79;font-size: 16px;font-weight: bold;">E-MAIL</label>  
+                                                <input type="text" id="user_email" name="email"  placeholder="ENTER EMAIL ID" class="form-control"  value="" ></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-1">
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-1">
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <div class="form-group">
+                                                    <label style="color: #7e7c79;font-size: 16px;font-weight: bold;">ADDRESS</label>  
+                                                    <textarea id="customer_address" name="address" placeholder="ENTER ADDRESS" class="form-control"  value="" ></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-2">
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <div class="form-group">
+                                                    <label style="color: #7e7c79;font-size: 16px;font-weight: bold;">PASSWORD</label>  
+                                                <input type="password" id="inPass" name="password"  placeholder="ENTER PASSWORD" class="form-control"  value="" ></textarea>
+                                                <input type="checkbox" onclick="myFunction()"> Show Password 
+                                                </div>
+                                            </div>
+                                                    
+                                                    
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-1">
+                                            </div>
+                                        </div>
+                                        
+                                        
+                                        <br>
+                                        <div class="form-group">
+                                            <div class="col-lg-4">
+                                            </div>
+                                            <div class="col-lg-4">
+                                            
+                                                <div style="text-align: center;">
+                                                    <button type="submit" name="Submit" class="btn btn-success" style="font-size: 16px;width: 35%;">SUBMIT </button>
+                                                    <button type="reset" name="reset"  class="btn btn-danger" style="font-size: 16px;width: 35%;">RESET </span></button>
+                                                </div>
+                                            </div>
+                                                <div class="col-lg-4">
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <!-- end row -->
                                     </div>
-                                    <br>
-								</form>
-                                    <!-- end row -->
                                 </div>
                             </div>
-                        </div>
-                <!-- end row -->
-
+                    <!-- end row -->
+                </form>
 
 
                 <!-- Footer -->
@@ -205,7 +209,7 @@
 
       
        <!-- jQuery  -->
-              <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/js/jquery.min.js"></script>
         <script src="assets/js/bootstrap.min.js"></script>
         <script src="assets/js/detect.js"></script>
         <script src="assets/js/fastclick.js"></script>
@@ -247,6 +251,16 @@
         <script src="assets/js/jquery.core.js"></script>
         <script src="assets/js/jquery.app.js"></script>
 		<script src="assets/pages/jquery.form-pickers.init.js"></script>
+        <script>
+            function myFunction() {
+                var x = document.getElementById("inPass");
+                if (x.type === "password") {
+                    x.type = "text";
+                } else {
+                    x.type = "password";
+                }
+            }
+        </script>
 
     </body>
 </html>

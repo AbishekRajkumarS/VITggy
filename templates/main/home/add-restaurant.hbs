@@ -57,7 +57,7 @@
                             <div class="btn-group pull-right">
                                 <ol class="breadcrumb hide-phone p-0 m-0">
                                     <li>
-                                        <a href="/">Food Order</a>
+                                        <a href="/admin">Food Order</a>
                                     </li>
 									<li>
                                         <a href="#">Restaurant</a>
@@ -77,15 +77,16 @@
                 <div class="row">
                             <div class="col-sm-12">
                                 <div class="card-box">
-								<form role="form">
-								<!--To Save Need to write backend connectivity code here. -->
+
+
+                                <form method="POST" action="/addNewRes">
 									<div class="row">
 										<div class="col-lg-1">
 										</div>
 										<div class="col-lg-4">
 											<div class="form-group">
 												<label style="color: #7e7c79;font-size: 16px;font-weight: bold;">RESTAURANT NAME</label>  
-												<input id="restaurant_name" name="restaurant_name"  placeholder="ENTER RESTAURANT NAME" class="form-control"  value="" type="text"/>
+												<input id="restaurant_name" name="restaurantName"  placeholder="ENTER RESTAURANT NAME" class="form-control"  value="" type="text"/>
 											</div>
 										</div>
 										<div class="col-lg-2">
@@ -93,7 +94,7 @@
 										<div class="col-lg-4">
 											<div class="form-group">
 												<label style="color: #7e7c79;font-size: 16px;font-weight: bold;">GSTIN</label>  
-											<input type="text" id="restaurant_gstin" name="restaurant_gstin" placeholder="ENTER RESTAURANT GSTIN" class="form-control"  value="" />
+											<input type="text" id="restaurant_gstin" name="gstin" placeholder="ENTER RESTAURANT GSTIN" class="form-control"  value="" />
 											</div>
 										</div>
 										<div class="col-lg-1">
@@ -106,7 +107,7 @@
 										<div class="col-lg-4">
 											<div class="form-group">
 												<label style="color: #7e7c79;font-size: 16px;font-weight: bold;">CONTACT NUMBER</label>  
-											<input type="text" id="restaurant_phone_number" name="restaurant_phone_number"  placeholder="ENTER RESTAURANT NUMBER" class="form-control"  value="" />
+											<input type="text" id="restaurant_phone_number" name="contactNum"  placeholder="ENTER RESTAURANT NUMBER" class="form-control"  value="" />
 											</div>
 										</div>
 										
@@ -115,7 +116,7 @@
 										<div class="col-lg-4">
 											<div class="form-group">
 												<label style="color: #7e7c79;font-size: 16px;font-weight: bold;">RESTAURANT ADDRESS</label>  
-												<textarea id="restaurant_address" name="restaurant_address" placeholder="ENTER RESTAURANT ADDRESS" class="form-control"  value="" ></textarea>
+												<textarea id="restaurant_address" name="restaurantAddr" placeholder="ENTER RESTAURANT ADDRESS" class="form-control"  value="" ></textarea>
 											</div>
 										</div>
 										<div class="col-lg-1">
@@ -128,7 +129,7 @@
 										<div class="col-lg-4">
 											<div class="form-group">
 												<label style="color: #7e7c79;font-size: 16px;font-weight:bold;">RESTAURANT DESCRIPTION</label>  
-											<textarea id="restaurant_des" name="restaurant_des"  placeholder="ENTER RESTAURANT DESCRIPTION" class="form-control"  value="" ></textarea>
+											<textarea id="restaurant_des" name="restaurantDesc"  placeholder="ENTER RESTAURANT DESCRIPTION" class="form-control"  value="" ></textarea>
 											</div>
 										</div>
 										<div class="col-lg-2">

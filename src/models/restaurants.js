@@ -1,6 +1,5 @@
 const mongoose = require('mongoose')
 const validator = require('validator')
-const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 
 restaurantSchema = new mongoose.Schema({
@@ -9,16 +8,12 @@ restaurantSchema = new mongoose.Schema({
         required: true,  
         trim: true
     },
-    contactNum: {
-        type: Number,
-        reue,
-        validate(value) {
-            if(value < 5 && value > 5) {
-                throw new Error('Not a valid id number');
-            }
-        }
-    },
     restaurantDesc: {
+        type: String,
+        required: true,
+        maxlength: 200
+    },
+    contactNum: {
         type: Number,
         default: 0,
         required: true,
@@ -32,14 +27,14 @@ restaurantSchema = new mongoose.Schema({
     },
     gstin: {
         type: String,
+        unique: true,
+        trim: true,
         required: true
     },
     restaurantAddr: {
         type: String,
-        required: true
-    },
-    logo: {
-        type: Buffer
+        required: true,
+        maxlength: 50
     },
     tokens: [{
         token: {

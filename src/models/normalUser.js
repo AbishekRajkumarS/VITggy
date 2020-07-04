@@ -11,6 +11,7 @@ const normalUserSchema = new mongoose.Schema({
     },
     idCardNum: {
         type: Number,
+        unique: true,
         required: true,
         validate(value) {
             if(value < 5 && value > 5) {
@@ -55,6 +56,17 @@ const normalUserSchema = new mongoose.Schema({
             }
         }
     },
+    password: {
+        type: String,
+        required: true,
+        minlength: 7,
+        trim: true,
+        validate(value) {
+            if (value.toLowerCase().includes('password')) {
+                throw new Error('Password cannot contain "password"')
+            }
+        }
+    },
     tokens: [{
         token: {
             type: String,
@@ -84,12 +96,39 @@ normalUserSchema.methods.generateAuthToken = async function () {
     return token
 }
 
-// Delete user tasks when user is removed
-normalUserSchema.pre('remove', async function (next) {
-    const user = this;
-    await Task.deleteMany({ _id: user._id });
-    next();
+normalUserSchema.statics.findByCredentials = async (email, password) => {
+    const user = await normalUser.findOne({ email })
+
+    if (!user) {
+        throw new Error('Unable to login')
+    }
+
+    const isMatch = await bcrypt.compare(password, user.password)
+
+    if (!isMatch) {
+        throw new Error('Unable to login')
+    }
+
+    return user
+}
+
+
+normalUserSchema.pre('save', async function (next) {
+    const user = this
+
+    if (user.isModified('password')) {
+        user.password = await bcrypt.hash(user.password, 8)
+    }
+
+    next()
 })
+
+// // Delete user tasks when user is removed
+// normalUserSchema.pre('remove', async function (next) {
+//     const user = this;
+//     await Task.deleteMany({ _id: user._id });
+//     next();
+// })
 
 const normalUser = mongoose.model('normalUser', normalUserSchema)
 

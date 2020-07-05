@@ -3,7 +3,9 @@ const User = require('../models/user')
 
 const auth = async function (req, res, next) {
     try {
-        const token = req.headers['authorization'].split(' ')[1]
+        
+        const token = req.session.token.split(' ')[1]
+        console.log(token)
 
         if(typeof token !== 'undefined') {
             console.log(token)

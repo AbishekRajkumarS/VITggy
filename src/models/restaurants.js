@@ -19,9 +19,9 @@ restaurantSchema = new mongoose.Schema({
         required: true,
         validate(value) {
             if (value < 10) {
-                throw new Error('Phone number must be a postive number')
+                throw new Error('Phone number must be a Valid.')
             }else if(value < 0) {
-                throw new Error('Phone number cant be negative');
+                throw new Error("Phone number can't be negative.");
             }
         }
     },
@@ -36,6 +36,23 @@ restaurantSchema = new mongoose.Schema({
         required: true,
         maxlength: 50
     },
+    menu: [{
+        food_id : {
+            type: String,
+            minlength: 1,
+            maxlength: 5
+        },
+        food_name: {
+            type: String,
+            minlength: 1,
+            maxlength: 15
+        },
+        food_cost: {
+            type: Number,
+            minlength: 1,
+            maxlength: 4
+        }
+    }],
     tokens: [{
         token: {
             type: String,

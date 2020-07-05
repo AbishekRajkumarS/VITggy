@@ -2,6 +2,7 @@ const express = require('express')
 const multer = require('multer')
 const sharp = require('sharp')
 
+
 const User = require('../models/user')
 const normalUser = require('../models/normalUser')
 const restaurant = require('../models/restaurants')
@@ -15,53 +16,53 @@ router.get('/', async (req, res) => {
     res.render("everyone")
 })
 
-router.get('/home', async (req, res) => {
+router.get('/home', auth, async (req, res) => {
     res.render("home", {
         user: req.user
     })
 })
 
-router.get('/admin', async(req, res) => {
+router.get('/admin', auth, async(req, res) => {
     res.render("index", {
         user: req.user
     })
 })
 
-router.get('/create-order', (req, res) => {
+router.get('/create-order', auth, (req, res) => {
     res.render("create-order", {
         user: req.user
     });
 })
 
-router.get('/order-list', (req, res) => {
+router.get('/order-list', auth, (req, res) => {
     res.render("order-list");
 })
 
-router.get('/add-user', (req, res) => {
+router.get('/add-user', auth, (req, res) => {
     res.render("add-user", {
         user: req.user
     });
 })
 
-router.get('/user-list', (req, res) => {
+router.get('/user-list', auth, (req, res) => {
     res.render("user-list", {
         user: req.user
     });
 })
 
-router.get('/add-restaurant', (req, res) => {
+router.get('/add-restaurant', auth, (req, res) => {
     res.render("add-restaurant", {
         user: req.user
     });
 })
 
-router.get('/restaurant-list', (req, res) => {
+router.get('/restaurant-list', auth, (req, res) => {
     res.render("restaurant-list", {
         user: req.user
     });
 })
 
-router.get('/std-restaurant-list', (req, res) => {
+router.get('/std-restaurant-list', auth, (req, res) => {
     res.render("std-res-list", {
         user: req.user
     });
@@ -87,7 +88,7 @@ router.post('/addAdminUsers', async(req, res) => {
     try {
         await user.save()
         //sendWelcomeEmail(user.email, user.name)
-        const token = await user.generateAuthToken()
+        // const token = await user.generateAuthToken()
         res.status(201).render("adminLogin")
     } catch (e) {
         res.status(400).send(e)
@@ -99,7 +100,7 @@ router.post('/addNewStd', async(req, res) => {
     const newUser = new normalUser(req.body)
     try{
         await newUser.save()
-        const token = await newUser.generateAuthToken()
+        // const token = await newUser.generateAuthToken()
         res.status(201).render("index") 
     }catch (e) {
         res.status(400).send(e)
@@ -111,7 +112,7 @@ router.post('/addNewRes', async(req, res) => {
     const newRes = new restaurant(req.body)
     try{
         await newRes.save()
-        const token = await newRes.generateAuthToken()
+        // const token = await newRes.generateAuthToken()
         res.status(201).render("index") 
     }catch (e) {
         res.status(400).send(e)
@@ -123,8 +124,10 @@ router.post('/login', async(req, res) => {
         // console.log('Hii')
         const user = await User.findByCredentials(req.body.email, req.body.password)
         // console.log(user)
-        const token = await user.generateAuthToken()
-        res.render("index", {token, user})
+        const token = "Bearer " + await user.generateAuthToken()
+        req.session.token = token
+        console.log(req.session.token)
+        res.redirect("/admin")
         // res.send({user, token});
     } catch (e) {
         res.status(400).send("ERROR");
@@ -156,6 +159,33 @@ router.post('/logout', async (req, res) => {
         res.status(500).send()
     }
 })
+
+const upload = multer({
+    limits: {
+        fileSize: 2000000
+    },
+    fileFilter(req, file, cb) {
+        if (!file.originalname.match(/\.(csv)$/)) {
+            return cb(new Error('Please upload a proper csv file.'))
+        }
+        cb(undefined, true)
+    }
+})
+
+router.post('/restaurant/csv', upload.single('avatar'), async (req, res) => {
+    const buffer = await sharp(req.file.buffer).csv().toBuffer()
+    // req.user.menu = buffer
+    // await req.user.save()
+    res.send()
+}, (error, req, res, next) => {
+    res.status(400).send({ error: error.message })
+})
+
+// router.delete('/users/me/avatar', auth, async (req, res) => {
+//     req.user.avatar = undefined
+//     await req.user.save()
+//     res.send()
+// })
 
 // router.get('/users/me', async (req, res) => {
 //     res.send({user: req.user})
@@ -189,33 +219,6 @@ router.post('/logout', async (req, res) => {
 //     } catch (e) {
 //         res.status(500).send()
 //     }
-// })
-
-// const upload = multer({
-//     limits: {
-//         fileSize: 2000000
-//     },
-//     fileFilter(req, file, cb) {
-//         if (!file.originalname.match(/\.(jpg|jpeg|png)$/)) {
-//             return cb(new Error('Please upload a proper image'))
-//         }
-//         cb(undefined, true)
-//     }
-// })
-
-// router.post('/restaurant/logo', upload.single('avatar'), async (req, res) => {
-//     const buffer = await sharp(req.file.buffer).resize({ width: 250, height: 250 }).png().toBuffer()
-//     req.user.logo = buffer
-//     await req.user.save()
-//     res.send()
-// }, (error, req, res, next) => {
-//     res.status(400).send({ error: error.message })
-// })
-
-// router.delete('/users/me/avatar', auth, async (req, res) => {
-//     req.user.avatar = undefined
-//     await req.user.save()
-//     res.send()
 // })
 
 // router.get('/users/:id/avatar', async (req, res) => {

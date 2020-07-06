@@ -8,6 +8,7 @@ const normalUser = require('../models/normalUser')
 const restaurant = require('../models/restaurants')
 
 const auth = require('../middleware/auth')
+const stdAuth = require('../middleware/stdAuth')
 
 const { sendWelcomeEmail, sendCancelationEmail } = require('../email/account')
 const router = new express.Router()
@@ -16,7 +17,7 @@ router.get('/', async (req, res) => {
     res.render("everyone")
 })
 
-router.get('/home', auth, async (req, res) => {
+router.get('/home', stdAuth, async (req, res) => {
     res.render("home", {
         user: req.user
     })
@@ -28,7 +29,7 @@ router.get('/admin', auth, async(req, res) => {
     })
 })
 
-router.get('/create-order', auth, (req, res) => {
+router.get('/create-order', stdAuth, (req, res) => {
     res.render("create-order", {
         user: req.user
     });
@@ -62,7 +63,7 @@ router.get('/restaurant-list', auth, (req, res) => {
     });
 })
 
-router.get('/std-restaurant-list', auth, (req, res) => {
+router.get('/std-restaurant-list', stdAuth, (req, res) => {
     res.render("std-res-list", {
         user: req.user
     });
@@ -72,7 +73,7 @@ router.get('/adminLogin', (req, res) => {
     res.render("adminLogin");
 })
 
-router.get('/studentLogin', (req, res) => {
+router.get('/stdLogin', (req, res) => {
     res.render("studentLogin");
 })
 
@@ -139,8 +140,10 @@ router.post('/stdlogin', async(req, res) => {
         // console.log('Hii')
         const user = await normalUser.findByCredentials(req.body.email, req.body.password)
         // console.log(user)
-        const token = await user.generateAuthToken()
-        res.render("home", {user, token})
+        const token = "Bearer " + await user.generateAuthToken()
+        req.session.token = token
+        console.log(req.session.token)
+        res.redirect("/home")
         // res.send({user, token});
     } catch (e) {
         res.status(400).send("ERROR");

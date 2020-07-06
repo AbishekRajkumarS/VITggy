@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
+const URL = process.env.MONGODB_URI || process.env.MOGODB_URL
 
-mongoose.connect("mongodb://127.0.0.1:27017/VITggy", {
+mongoose.connect(URL, {
     useNewUrlParser: true,
     useCreateIndex: true,
     useUnifiedTopology: true,

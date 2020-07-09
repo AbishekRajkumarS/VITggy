@@ -1,4 +1,4 @@
-<!-- Navigation Bar-->
+ <!-- Navigation Bar-->
        
         <!-- Navigation Bar-->
         <header id="topnav">
@@ -12,7 +12,7 @@
                             <!--Zircos-->
                         <!--</a>-->
                         <!-- Image Logo -->
-                        <a href="/home" class="logo">
+                        <a href="/" class="logo">
                             <p style="margin-top:20px;">VITggy</p>
                         </a>
 
@@ -22,19 +22,11 @@
 
                     <div class="menu-extras">
 
-                        <ul class="navbar-nav mr-auto navbar-right pull-right">
-                            
-                            <li class="nav-item dropdown">
-                                <a class="nav-link" style="margin-top:20px;" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <p>{{name}}</p>
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="/student/logout">Logout</a>
-                                </div>
+                        <ul class="nav navbar-nav navbar-right pull-right">
+                            <li class="dropdown navbar-c-items">
+                                <a href="/stdlogin" class="nav navbar-nav navbar-right pull-right dropdown-toggle waves-effect waves-light profile" aria-expanded="true"><img src="assets/images/users/download.jfif" alt="user-img" class="img-circle"> </a>
                             </li>
-                    
                         </ul>
-
                         <div class="menu-item">
                             <!-- Mobile menu toggle-->
                             <a class="navbar-toggle">
@@ -60,39 +52,21 @@
                         <ul class="navigation-menu">
 
                             <li class="has-submenu">
-                                <a href="/home"><i class="mdi mdi-view-dashboard"></i>Dashboard</a>
+                                <a href="/"><i class="mdi mdi-view-dashboard"></i>Dashboard</a>
                                 
                             </li>
 
                             <li class="has-submenu">
-                                <a href="#"><i class="mdi mdi-home"></i>Restaurants</a>
-                                <ul class="submenu megamenu">
-                                    <li>
-                                        <ul>
-                                            <li><a href="/std-restaurant-list">Restaurants List</a></li>
-                                            
-                                        </ul>
-                                    </li>
-                                </ul>
+                                
+                                <a href="/every-res-list"><i class="mdi mdi-home"></i>Restaurants</a>
+                                
                             </li>
 							
-							<li class="has-submenu">
-                                <a href="#"><i class=" mdi mdi-file-import"></i>Order</a>
-                                <ul class="submenu megamenu">
-                                    <li>
-                                        <ul>
-											<li><a href="/create-order">Create Order</a></li>
-										</ul>
-                                    </li>
-                                </ul>
-                            </li>
-							
-							
-						    
                         </ul>
                         <!-- End navigation menu -->
                     </div> <!-- end #navigation -->
                 </div> <!-- end container -->
             </div> <!-- end navbar-custom -->
+
         </header>
         <!-- End Navigation Bar-->

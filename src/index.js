@@ -4,6 +4,9 @@ const express = require('express')
 const path = require('path');
 const port =  process.env.PORT || 3000;
 
+// require('dotenv').config();
+// console.log(process.env)
+
 var getDirName = path.join(__dirname, '../templates/main/home');
 var viewPath = path.join(__dirname, '../templates/main/home');
 var partialPath = path.join(__dirname, '../templates/partials')

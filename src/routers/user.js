@@ -19,55 +19,85 @@ router.get('/', async (req, res) => {
 
 router.get('/home', stdAuth, async (req, res) => {
     res.render("home", {
-        user: req.user
+        user: req.user,
+        name: req.user.name
     })
 })
 
 router.get('/admin', auth, async(req, res) => {
     res.render("index", {
-        user: req.user
+        user: req.user,
+        name: req.user.name
     })
 })
 
 router.get('/create-order', stdAuth, (req, res) => {
     res.render("create-order", {
-        user: req.user
+        user: req.user,
+        name: req.user.name
     });
 })
 
 router.get('/order-list', auth, (req, res) => {
-    res.render("order-list");
+    res.render("order-list", {
+        user: req.user,
+        name: req.user.name
+    });
 })
 
 router.get('/add-user', auth, (req, res) => {
     res.render("add-user", {
-        user: req.user
+        user: req.user,
+        name: req.user.name
     });
 })
 
 router.get('/user-list', auth, (req, res) => {
     res.render("user-list", {
-        user: req.user
+        user: req.user,
+        name: req.user.name
     });
 })
 
 router.get('/add-restaurant', auth, (req, res) => {
     res.render("add-restaurant", {
-        user: req.user
+        user: req.user,
+        name: req.user.name
     });
 })
 
+// router.get('/restaurant-list', auth, (req, res) => {
+//     res.render("restaurant-list", {
+//         user: req.user
+//     });
+// })
+
 router.get('/restaurant-list', auth, (req, res) => {
-    res.render("restaurant-list", {
-        user: req.user
-    });
+    restaurant.find({}, (err, restaurant) => {
+        if (err) {
+            res.JSON({
+                "message": "OOPS!...An Error has occured"
+            })
+        }
+        // console.log(restaurant)
+        res.render("restaurant-list", {
+            restaurant,
+            name: req.user.name
+        })
+    })
 })
 
 router.get('/std-restaurant-list', stdAuth, (req, res) => {
     res.render("std-res-list", {
-        user: req.user
+        user: req.user,
+        name: req.user.name
     });
 })
+
+router.get('/every-res-list', async (req, res) => {
+    res.render("every-res-list")
+})
+
 
 router.get('/adminLogin', (req, res) => {
     res.render("adminLogin");
@@ -150,14 +180,29 @@ router.post('/stdlogin', async(req, res) => {
     }
 })
 
-router.post('/logout', async (req, res) => {
+router.get('/admin/logout', auth, async (req, res) => {
     try {
         req.user.tokens = req.user.tokens.filter((token) => {
             return token.token !== req.token
         })
         await req.user.save()
+        req.session.token = null
 
-        res.send()
+        res.send().redirect("/")
+    } catch (e) {
+        res.status(500).send()
+    }
+})
+
+router.get('/student/logout', stdAuth, async (req, res) => {
+    try {
+        req.user.tokens = req.user.tokens.filter((token) => {
+            return token.token !== req.token
+        })
+        await req.user.save()
+        req.session.token = null
+
+        res.send().redirect("/")
     } catch (e) {
         res.status(500).send()
     }

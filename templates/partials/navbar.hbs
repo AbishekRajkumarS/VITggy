@@ -22,10 +22,17 @@
 
                     <div class="menu-extras">
 
-                        <ul class="nav navbar-nav navbar-right pull-right">
-                            <li class="dropdown navbar-c-items">
-                                <a href="/adminlogin" class="nav navbar-nav navbar-right pull-right dropdown-toggle waves-effect waves-light profile" aria-expanded="true"><img src="assets/images/users/download.jfif" alt="user-img" class="img-circle"> </a>
+                        <ul class="navbar-nav mr-auto navbar-right pull-right">
+                            
+                            <li class="nav-item dropdown">
+                                <a class="nav-link" style="margin-top:20px;" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <p>{{name}}</p>
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="/admin/logout">Logout</a>
+                                </div>
                             </li>
+                    
                         </ul>
                         <div class="menu-item">
                             <!-- Mobile menu toggle-->

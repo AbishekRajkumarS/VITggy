@@ -67,7 +67,7 @@ adminUserSchema.methods.toJSON = function () {
 
 adminUserSchema.methods.generateAuthToken = async function () {
     const user = this
-    const token = jwt.sign({ _id: user._id.toString() }, 'thisismysecretkey', {expiresIn: "1d"});
+    const token = jwt.sign({ _id: user._id.toString() }, 'thisismysecretkey');
     user.tokens = user.tokens.concat({ token })
     await user.save()
 

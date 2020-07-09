@@ -20,7 +20,7 @@ router.get('/', async (req, res) => {
 router.get('/home', stdAuth, async (req, res) => {
     res.render("home", {
         user: req.user,
-        name: req.user.name
+        name: req.user.username
     })
 })
 
@@ -34,7 +34,7 @@ router.get('/admin', auth, async(req, res) => {
 router.get('/create-order', stdAuth, (req, res) => {
     res.render("create-order", {
         user: req.user,
-        name: req.user.name
+        name: req.user.username
     });
 })
 
@@ -90,7 +90,7 @@ router.get('/restaurant-list', auth, (req, res) => {
 router.get('/std-restaurant-list', stdAuth, (req, res) => {
     res.render("std-res-list", {
         user: req.user,
-        name: req.user.name
+        name: req.user.username
     });
 })
 

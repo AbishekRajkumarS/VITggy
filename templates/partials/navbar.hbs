@@ -29,7 +29,8 @@
                                     <p>{{name}}</p>
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="/admin/logout">Logout</a>
+                                    <form id="myform" method="post" action="/admin/logout"></form>
+                                    <a onclick="document.getElementById('myform').submit();">Logout</a>
                                 </div>
                             </li>
                     

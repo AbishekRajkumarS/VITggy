@@ -66,11 +66,6 @@ router.get('/add-restaurant', auth, (req, res) => {
     });
 })
 
-// router.get('/restaurant-list', auth, (req, res) => {
-//     res.render("restaurant-list", {
-//         user: req.user
-//     });
-// })
 
 router.get('/restaurant-list', auth, (req, res) => {
     restaurant.find({}, (err, restaurant) => {
@@ -171,8 +166,8 @@ router.post('/stdlogin', async(req, res) => {
         const user = await normalUser.findByCredentials(req.body.email, req.body.password)
         // console.log(user)
         const token = "Bearer " + await user.generateAuthToken()
-        req.session.token = token
-        console.log(req.session.token)
+        req.session.stdtoken = token
+        console.log(req.session.stdtoken)
         res.redirect("/home")
         // res.send({user, token});
     } catch (e) {
@@ -180,7 +175,7 @@ router.post('/stdlogin', async(req, res) => {
     }
 })
 
-router.get('/admin/logout', auth, async (req, res) => {
+router.post('/admin/logout', auth, async (req, res) => {
     try {
         req.user.tokens = req.user.tokens.filter((token) => {
             return token.token !== req.token
@@ -194,13 +189,13 @@ router.get('/admin/logout', auth, async (req, res) => {
     }
 })
 
-router.get('/student/logout', stdAuth, async (req, res) => {
+router.post('/student/logout', stdAuth, async (req, res) => {
     try {
         req.user.tokens = req.user.tokens.filter((token) => {
             return token.token !== req.token
         })
         await req.user.save()
-        req.session.token = null
+        req.session.stdtoken = null
 
         res.send().redirect("/")
     } catch (e) {

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Signup Page</title>
+        <link rel="stylesheet" type="text/css" href="./assets/css/listd.css">
+    </head>
+    <body>
+        <div class="login">    
+            <h1>Student Sign Up</h1>
+            <form method="POST" action="/addNewStd">
+
+                <div class="inputbox">
+                        <input type="email" name="email" required>
+                        <label>Email</label>
+                </div>
+    
+                <div class="inputbox">
+                        <input type="password" name="password" minlength="7" required>
+                        <label>Password</label>
+                </div>
+
+                <div class="inputbox">
+                        <input type="text" name="name" required>
+                        <label>Name</label>
+                </div>
+
+                <div class="inputbox">
+                        <input type="tel" name="phoneNum" minlength="0" maxlength="10" required>
+                        <label>Phone number</label>
+                </div>
+
+                <div class="inputbox">
+                        <input type="text" name="idCardNum" minlength="0" maxlength="6" required>
+                        <label>ID number</label>
+                </div>
+
+                <div class="inputbox">
+                        <input type="text" name="address" minlength="0" maxlength="30" required>
+                        <label>Address</label>
+                </div>
+
+                <div class="inputbox">
+                        <input type="text" name="department" minlength="0" maxlength="15" required>
+                        <label>Department</label>
+                </div>
+
+                 <div class="rad">
+                        <div class="form-group">
+                            <label style="font-size: 16px;font-weight: bold;">GENDER</label> <br> 
+                            <label><input type="radio" id="user_gender" name="gender"   value="M" > Male</label>
+                            <label><input type="radio" id="user_gender" name="gender"    value="F" > Female</label>
+                        </div>    
+                </div>
+                <br>
+
+                <div id="button">
+                    <button type="submit">Sign up</button>
+                </div>
+
+            </form>
+            <a href="/stdLogin">Do you have an account? Login</a>
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    </body>
+    

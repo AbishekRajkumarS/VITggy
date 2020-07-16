@@ -13,6 +13,18 @@ const stdAuth = require('../middleware/stdAuth')
 const { sendWelcomeEmail, sendCancelationEmail } = require('../email/account')
 const router = new express.Router()
 
+const upload = multer({
+    limits: {
+        fileSize: 2000000
+    },
+    fileFilter(req, file, cb) {
+        if (!file.originalname.match(/\.(csv)$/)) {
+            return cb(new Error('Please upload a proper csv file.'))
+        }
+        cb(undefined, true)
+    }
+})
+
 router.get('/', async (req, res) => {
     res.render("everyone")
 })
@@ -45,12 +57,12 @@ router.get('/order-list', auth, (req, res) => {
     });
 })
 
-router.get('/add-user', auth, (req, res) => {
-    res.render("add-user", {
-        user: req.user,
-        name: req.user.name
-    });
-})
+// router.get('/add-user', auth, (req, res) => {
+//     res.render("add-user", {
+//         user: req.user,
+//         name: req.user.name
+//     });
+// })
 
 router.get('/user-list', auth, (req, res) => {
     res.render("user-list", {
@@ -68,17 +80,10 @@ router.get('/add-restaurant', auth, (req, res) => {
 
 
 router.get('/restaurant-list', auth, (req, res) => {
-    restaurant.find({}, (err, restaurant) => {
-        if (err) {
-            res.JSON({
-                "message": "OOPS!...An Error has occured"
-            })
-        }
-        // console.log(restaurant)
-        res.render("restaurant-list", {
-            restaurant,
-            name: req.user.name
-        })
+    restaurant.find({}).then((restaurant) => {
+        res.send(restaurant)
+    }).catch((e) => {
+        res.send(e)
     })
 })
 
@@ -102,8 +107,12 @@ router.get('/stdLogin', (req, res) => {
     res.render("studentLogin");
 })
 
+router.get('/adminSignUp', (req, res) => {
+    res.send("<script>alert('This page is Curenntly unavilable')</script>");
+})
+
 router.get('/signUp', (req, res) => {
-    res.render("adminSignUp");
+    res.render("studentSignUp");
 })
 
 //Data Base Part
@@ -127,13 +136,13 @@ router.post('/addNewStd', async(req, res) => {
     try{
         await newUser.save()
         // const token = await newUser.generateAuthToken()
-        res.status(201).render("index") 
+        res.status(201).redirect("/stdLogin") 
     }catch (e) {
         res.status(400).send(e)
     }
 })
 
-router.post('/addNewRes', async(req, res) => {
+router.post('/addNewRes', upload.single('csv-file'), async(req, res) => {
     // console.log(req.body);
     const newRes = new restaurant(req.body)
     try{
@@ -156,7 +165,7 @@ router.post('/login', async(req, res) => {
         res.redirect("/admin")
         // res.send({user, token});
     } catch (e) {
-        res.status(400).send("ERROR");
+        res.status(400).send(e);
     }
 })
 
@@ -203,26 +212,18 @@ router.post('/student/logout', stdAuth, async (req, res) => {
     }
 })
 
-const upload = multer({
-    limits: {
-        fileSize: 2000000
-    },
-    fileFilter(req, file, cb) {
-        if (!file.originalname.match(/\.(csv)$/)) {
-            return cb(new Error('Please upload a proper csv file.'))
-        }
-        cb(undefined, true)
-    }
-})
 
-router.post('/restaurant/csv', upload.single('avatar'), async (req, res) => {
-    const buffer = await sharp(req.file.buffer).csv().toBuffer()
-    // req.user.menu = buffer
-    // await req.user.save()
-    res.send()
-}, (error, req, res, next) => {
-    res.status(400).send({ error: error.message })
-})
+// router.post('/restaurant/csv', auth, upload.single('csv-file'), async (req, res) => {
+    
+//     const buffer = req.file.buffer
+//     // req.user.menu = buffer
+//     // await req.user.save()
+//     console.log(req.body)
+//     res.send()
+// }, (error, req, res, next) => {
+//     res.status(400).send({ error: error.message })
+//     next()
+// })
 
 // router.delete('/users/me/avatar', auth, async (req, res) => {
 //     req.user.avatar = undefined
@@ -299,5 +300,37 @@ router.post('/restaurant/csv', upload.single('avatar'), async (req, res) => {
 //         res.status(404).send()
 //     }
 // })
+
+
+
+router.get('/dummy', (req, res) => {
+    res.send(`
+        <form id="my-form">
+            <input type='file' id='file' >
+            <button type='submit'>Upload</button>
+        </form>
+        <script>
+            const myForm = document.getElementById("my-form")
+            const myInp = document.getElementById("file")
+
+            myForm.addEventListener("submit", e => {
+                e.preventDefault();
+
+                const endpoint = "/restaurant/csv"
+                const formData = new FormData();
+
+                // console.log(myInp.files)
+
+                formData.append("csv-file", myInp.files[0])
+
+                fetch(endpoint, {
+                    method: "post",
+                    body: formData
+                }).catch(console.error)
+            })
+             
+        </script>
+    `)
+})
 
 module.exports = router

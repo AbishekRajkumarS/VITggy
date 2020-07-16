@@ -1,8 +1,7 @@
 const mongoose = require('mongoose')
 const validator = require('validator')
-const jwt = require('jsonwebtoken')
 
-restaurantSchema = new mongoose.Schema({
+orderSchema = new mongoose.Schema({
     restaurantName: {
         type: String,
         required: true,  
@@ -52,6 +51,12 @@ restaurantSchema = new mongoose.Schema({
             minlength: 1,
             maxlength: 4
         }
+    }],
+    tokens: [{
+        token: {
+            type: String,
+            required: true
+        }
     }]
 },{
     timestamps: true
@@ -67,12 +72,24 @@ restaurantSchema.methods.toJSON = function () {
     return userObject
 }
 
-// // Delete user tasks when user is removed
-// restaurantSchema.pre('remove', async function (next) {
-//     const user = this;
-//     await Task.deleteMany({ _id: user._id });
-//     next();
-// })
+restaurantSchema.methods.generateAuthToken = async function () {
+    const user = this
+    const token = jwt.sign({ _id: user._id.toString() }, 'thisismysecretkey', { expiresIn: '1d'})
+
+    user.tokens = user.tokens.concat({ token })
+    await user.save()
+
+    return token
+}
+
+
+
+// Delete user tasks when user is removed
+restaurantSchema.pre('remove', async function (next) {
+    const user = this;
+    await Task.deleteMany({ _id: user._id });
+    next();
+})
 
 const restaurant = mongoose.model('restaurant', restaurantSchema)
 
